@@ -1,0 +1,27 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: true
+    project: cluster-config
+    destination:
+      namespace: openshift-gitops
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/vagabond-studios/gitops-config
+      targetRevision: HEAD
+
+projects:
+  cluster-config:
+    description: Project for overall cluster configuration
+    namespace: openshift-gitops
+    sourceRepos:
+      - https://github.com/vagabond-studios/gitops-config
+      - https://github.com/tim-stasse/gitops-catalog
+    destinations: |
+      - namespace: '*'
+        server: https://kubernetes.default.svc
+    extraFields: |
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
