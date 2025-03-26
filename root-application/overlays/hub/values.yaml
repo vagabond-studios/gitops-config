@@ -31,7 +31,7 @@ applications:
     annotations:
       argocd.argoproj.io/sync-wave: "1"
     source:
-      path: machine-config/overlays/hub
+      path: machine-config/overlays/default
 
   patch-operator:
     annotations:
@@ -39,4 +39,4 @@ applications:
     destination:
       namespace: patch-operator
     source:
-      path: patch-operator/overlays/hub
+      path: patch-operator/overlays/default
