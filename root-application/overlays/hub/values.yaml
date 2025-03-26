@@ -25,3 +25,10 @@ projects:
       clusterResourceWhitelist:
       - group: '*'
         kind: '*'
+
+applications:
+  machine-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    source:
+      path: machine-config/overlays/hub
