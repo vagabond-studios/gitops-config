@@ -32,3 +32,11 @@ applications:
       argocd.argoproj.io/sync-wave: "1"
     source:
       path: machine-config/overlays/hub
+
+  patch-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: patch-operator
+    source:
+      path: patch-operator/overlays/hub
