@@ -8,4 +8,7 @@ patches:
   - target:
       kind: ClusterRoleBinding
       name: job-gitops-console-plugin
-    path: patch-subject-namespace.yaml
+    patch: |-
+      - op: replace
+        path: /subjects/0/namespace
+        value: openshift-gitops

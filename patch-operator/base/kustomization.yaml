@@ -5,6 +5,10 @@ resources:
   - github.com/tim-stasse/gitops-catalog/patch-operator/operator/overlays/alpha?ref=main
 
 patches:
-  - path: patch-subscription.yaml
-    target:
+  - target:
       kind: Subscription
+      name: patch-operator
+    patch: |-
+      - op: replace
+        path: /spec/config/resources/limits/memory
+        value: 1Gi
