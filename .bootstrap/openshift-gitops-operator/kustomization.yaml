@@ -6,6 +6,18 @@ resources:
 
 patches:
   - target:
+      kind: ServiceAccount
+      name: job-gitops-console-plugin
+    path: patch-metadata-namespace.yaml
+  - target:
       kind: ClusterRoleBinding
       name: job-gitops-console-plugin
     path: patch-subject-namespace.yaml
+  - target:
+      kind: ConfigMap
+      name: job-gitops-console-plugin
+    path: patch-metadata-namespace.yaml
+  - target:
+      kind: Job
+      name: job-gitops-console-plugin
+    path: patch-metadata-namespace.yaml
