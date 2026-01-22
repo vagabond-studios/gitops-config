@@ -9,6 +9,6 @@ patches:
       kind: Subscription
       name: patch-operator
     patch: |-
-      - op: replace
+      - op: add
         path: /spec/config/resources/limits/memory
         value: 1Gi
