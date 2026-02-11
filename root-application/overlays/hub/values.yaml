@@ -27,6 +27,14 @@ projects:
         kind: '*'
 
 applications:
+  openshift-gitops-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: openshift-gitops
+    source:
+      path: openshift-gitops-config/overlays/default
+
   machine-config:
     annotations:
       argocd.argoproj.io/sync-wave: "1"
