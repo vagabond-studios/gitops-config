@@ -40,3 +40,11 @@ applications:
       namespace: patch-operator
     source:
       path: patch-operator/overlays/default
+
+  openshift-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: openshift-config
+    source:
+      path: openshift-config/overlays/default
