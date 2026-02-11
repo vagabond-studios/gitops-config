@@ -7,3 +7,13 @@ resources:
 components:
   - github.com/tim-stasse/gitops-catalog/openshift-gitops-operator/instance/components/application-controller-cluster-admin?ref=main
   - github.com/tim-stasse/gitops-catalog/openshift-gitops-operator/instance/components/kustomize-build-enable-helm?ref=main
+
+patches:
+  - target:
+      kind: Group
+      name: gitops-admins
+    patch: |-
+      - op: replace
+        path: /users
+        value:
+          - kubeadmin
