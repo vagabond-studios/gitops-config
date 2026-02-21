@@ -6,6 +6,8 @@ spec:
   secretName: tls-certificate
   isCA: false
   commonName: keycloak-ingress-keycloak.apps-crc.testing
+  dnsNames:
+    - keycloak-ingress-keycloak.apps-crc.testing
   issuerRef:
     name: self-signed-ca
     kind: ClusterIssuer
