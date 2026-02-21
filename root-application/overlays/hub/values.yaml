@@ -115,3 +115,17 @@ applications:
       namespace: keycloak
     source:
       path: redhat-keycloak-instance/overlays/default
+
+  crossplane-provider-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "4"
+    destination:
+      namespace: crossplane-system
+    source:
+      path: crossplane-provider-config/overlays/default
+    extraFields: |
+      ignoreDifferences:
+        - kind: Secret
+          name: keycloak-credentials
+          jqPathExpressions:
+            - .data
