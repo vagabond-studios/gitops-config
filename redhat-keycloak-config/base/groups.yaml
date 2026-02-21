@@ -1,0 +1,21 @@
+apiVersion: group.keycloak.crossplane.io/v1alpha1
+kind: Group
+metadata:
+  name: admin-group
+spec:
+  deletionPolicy: Delete
+  forProvider:
+    name: admin
+    realmId: vagabond-studios
+---
+apiVersion: group.keycloak.crossplane.io/v1alpha1
+kind: Memberships
+metadata:
+  name: admin-group-memberships
+spec:
+  forProvider:
+    realmId: vagabond-studios
+    groupIdRef:
+      name: admin-group
+    members:
+      - tim.stasse

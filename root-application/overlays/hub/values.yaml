@@ -156,3 +156,11 @@ applications:
           name: keycloak-credentials
           jqPathExpressions:
             - .data
+
+  redhat-keycloak-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "8"
+    destination:
+      namespace: keycloak
+    source:
+      path: redhat-keycloak-config/overlays/default
