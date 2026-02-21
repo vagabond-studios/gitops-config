@@ -15,7 +15,5 @@ spec:
     passwordSecret:
       name: keycloakdb-pguser-keycloakdb
       key: password
-  http:
-    tlsSecret: tls-certificate
   ingress:
     className: openshift-default
