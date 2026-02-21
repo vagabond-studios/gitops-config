@@ -73,3 +73,11 @@ applications:
     source:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: redhat-keycloak/operator/overlays/stable-v24
+
+  redhat-keycloak-instance:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
+    destination:
+      namespace: keycloak
+    source:
+      path: redhat-keycloak-instance/overlays/default
