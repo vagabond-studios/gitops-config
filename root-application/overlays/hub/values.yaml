@@ -101,6 +101,15 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: external-secrets-operator/instance/overlays/default
 
+  group-sync-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: group-sync-operator
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: group-sync-operator/overlays/alpha
+
   redhat-keycloak-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
