@@ -21,12 +21,17 @@ spec:
           kind: Keycloak
           namespace: keycloak
           name: keycloak
+        - apiVersion: v1
+          kind: Secret
+          namespace: cert-manager
+          name: self-signed-ca-root
       patchTemplate: |
         {{ $client_id := "admin-cli" }}
         {{ $username := (index . 1).data.username | b64dec }}
         {{ $password := (index . 1).data.password | b64dec }}
         {{ $url := printf "https://%s" (index . 2).spec.hostname.hostname }}
-        {{ $value := dict "client_id" $client_id "username" $username "password" $password "url" $url }}
+        {{ $root_ca_certificate := get (index . 3).data "ca.crt" | b64dec }}
+        {{ $value := dict "client_id" $client_id "username" $username "password" $password "url" $url "root_ca_certificate" $root_ca_certificate }}
         data:
           credentials: {{ $value | toJson | b64enc }}
       patchType: application/merge-patch+json
