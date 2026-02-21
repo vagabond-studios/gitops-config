@@ -27,7 +27,7 @@ metadata:
   name: ocp-oauth-client-default-scopes
 spec:
   forProvider:
-    clientId: ocp-client
+    clientId: ocp-oauth
     realmId: vagabond-studios
     defaultScopes:
       - profile
