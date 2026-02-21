@@ -83,6 +83,14 @@ applications:
       repoURL: https://github.com/tim-stasse/gitops-catalog
       path: redhat-keycloak/operator/overlays/stable-v24
 
+  cert-manager-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "3"
+    destination:
+      namespace: cert-manager
+    source:
+      path: cert-manager-config/overlays/default
+
   redhat-keycloak-instance:
     annotations:
       argocd.argoproj.io/sync-wave: "3"
