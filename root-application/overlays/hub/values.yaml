@@ -57,6 +57,15 @@ applications:
     source:
       path: openshift-config/overlays/default
 
+  cert-manager-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: cert-manager-operator
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: openshift-cert-manager-operator/operator/overlays/stable-v1
+
   crunchy-postgres-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
