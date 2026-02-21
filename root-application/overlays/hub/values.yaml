@@ -56,3 +56,12 @@ applications:
       namespace: openshift-config
     source:
       path: openshift-config/overlays/default
+
+  redhat-keycloak-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: keycloak
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: redhat-keycloak/operator/overlays/stable-v24
