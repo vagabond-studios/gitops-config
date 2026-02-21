@@ -1,0 +1,8 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - github.com/tim-stasse/gitops-catalog/crunchy-postgres-operator/operator/overlays/v6?ref=main
+
+components:
+  - github.com/tim-stasse/gitops-catalog/crunchy-postgres-operator/operator/components/separate-namespace?ref=main

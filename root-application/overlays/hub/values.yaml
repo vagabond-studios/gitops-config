@@ -57,6 +57,14 @@ applications:
     source:
       path: openshift-config/overlays/default
 
+  crunchy-postgres-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "2"
+    destination:
+      namespace: crunchy-postgres-operator
+    source:
+      path: crunchy-postgres-operator/overlays/default
+
   redhat-keycloak-operator:
     annotations:
       argocd.argoproj.io/sync-wave: "2"
