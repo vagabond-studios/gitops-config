@@ -49,6 +49,15 @@ applications:
     source:
       path: patch-operator/overlays/default
 
+  external-secrets-operator:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    destination:
+      namespace: openshift-operators
+    source:
+      repoURL: https://github.com/tim-stasse/gitops-catalog
+      path: external-secrets-operator/operator/overlays/stable
+
   openshift-config:
     annotations:
       argocd.argoproj.io/sync-wave: "1"
