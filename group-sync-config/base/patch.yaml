@@ -1,0 +1,24 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: Patch
+metadata:
+  name: group-sync-patches
+spec:
+  serviceAccountRef:
+    name: default
+  patches:
+    keycloak-credentials:
+      targetObjectRef:
+        apiVersion: v1
+        kind: Secret
+        namespace: group-sync-operator
+        name: keycloak-credentials
+      sourceObjectRefs:
+        - apiVersion: v1
+          kind: Secret
+          namespace: keycloak
+          name: keycloak-initial-admin
+      patchTemplate: |
+        data:
+          username: {{ (index . 1).data.username }}
+          password: {{ (index . 1).data.password }}
+      patchType: application/merge-patch+json

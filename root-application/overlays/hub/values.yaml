@@ -159,8 +159,16 @@ applications:
 
   redhat-keycloak-config:
     annotations:
-      argocd.argoproj.io/sync-wave: "8"
+      argocd.argoproj.io/sync-wave: "5"
     destination:
       namespace: keycloak
     source:
       path: redhat-keycloak-config/overlays/default
+
+  group-sync-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "5"
+    destination:
+      namespace: group-sync-operator
+    source:
+      path: group-sync-config/overlays/default

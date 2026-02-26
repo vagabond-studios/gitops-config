@@ -1,0 +1,17 @@
+apiVersion: redhatcop.redhat.io/v1alpha1
+kind: GroupSync
+metadata:
+  name: group-sync
+spec:
+  providers:
+    - name: keycloak
+      keycloak:
+        loginRealm: master
+        realm: vagabond-studios
+        url: https://keycloak-ingress-keycloak.apps-crc.testing
+        prune: true
+        scope: sub
+        credentialsSecret:
+          kind: Secret
+          name: keycloak-credentials
+          namespace: group-sync-operator
