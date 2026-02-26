@@ -21,18 +21,6 @@ spec:
     implicitFlowEnabled: false
     consentRequired: false
 ---
-apiVersion: openidclient.keycloak.crossplane.io/v1alpha1
-kind: ClientDefaultScopes
-metadata:
-  name: ocp-oauth-client-default-scopes
-spec:
-  forProvider:
-    clientId: ocp-oauth
-    realmId: vagabond-studios
-    defaultScopes:
-      - profile
-      - email
----
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
 metadata:
