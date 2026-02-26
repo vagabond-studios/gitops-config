@@ -15,3 +15,8 @@ spec:
           kind: Secret
           name: keycloak-credentials
           namespace: group-sync-operator
+        ca:
+          kind: Secret
+          name: self-signed-ca-root
+          namespace: cert-manager
+          key: ca.crt
