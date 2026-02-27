@@ -17,3 +17,4 @@ patches:
         path: /users
         value:
           - kubeadmin
+          - tim.stasse
