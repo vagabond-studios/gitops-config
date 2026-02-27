@@ -4,7 +4,7 @@ metadata:
   name: group-sync-patches
 spec:
   serviceAccountRef:
-    name: default
+    name: patcher
   patches:
     keycloak-credentials:
       targetObjectRef:
