@@ -3,3 +3,7 @@ kind: Kustomization
 
 resources:
   - console.yaml
+  - oidc-client-secret.yaml
+  - oauth.yaml
+  - patch-rbac.yaml
+  - patch.yaml
