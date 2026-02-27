@@ -20,21 +20,3 @@ spec:
     directAccessGrantsEnabled: true
     implicitFlowEnabled: false
     consentRequired: false
----
-apiVersion: external-secrets.io/v1beta1
-kind: ExternalSecret
-metadata:
-  name: ocp-oauth-client-secret
-spec:
-  target:
-    name: ocp-oauth
-    template:
-      engineVersion: v2
-      data:
-        clientSecret: "{{ .password }}"
-  dataFrom:
-    - sourceRef:
-        generatorRef:
-          apiVersion: generators.external-secrets.io/v1alpha1
-          kind: Password
-          name: password-generator

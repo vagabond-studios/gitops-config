@@ -7,5 +7,6 @@ resources:
   - initial-user-passwords.yaml
   - keycloak-realm.yaml
   - clients.yaml
+  - ocp-oauth-client-secret.yaml
   - groups.yaml
   - users.yaml
