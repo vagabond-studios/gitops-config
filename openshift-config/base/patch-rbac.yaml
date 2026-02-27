@@ -3,24 +3,24 @@ kind: ServiceAccount
 metadata:
   name: patcher
 ---
-kind: Role
+kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: secret-creator
+  name: openshift-config-secret-patcher
 rules:
 - apiGroups: [""]
-  resources: ["oidc-client-secret"]
-  verbs: ["get", "watch", "update", "patch"]
+  resources: ["secrets"]
+  verbs: ["get", "list", "watch", "patch"]
 ---
-kind: RoleBinding
+kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: patcher-secret-creator
+  name: openshift-config-secret-patcher
 subjects:
   - kind: ServiceAccount
     name: patcher
     namespace: openshift-config
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: secret-creator
+  kind: ClusterRole
+  name: openshift-config-secret-patcher
