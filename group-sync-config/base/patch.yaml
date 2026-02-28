@@ -1,7 +1,7 @@
 apiVersion: redhatcop.redhat.io/v1alpha1
 kind: Patch
 metadata:
-  name: group-sync-patches
+  name: group-sync-patch
 spec:
   serviceAccountRef:
     name: patcher
