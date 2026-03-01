@@ -3,20 +3,43 @@ kind: ServiceAccount
 metadata:
   name: patcher
 ---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: secret-patcher
+rules:
+  - apiGroups: [""]
+    resources: ["secrets"]
+    resourceNames: ["keycloak-credentials"]
+    verbs: ["patch"]
+---
 kind: ClusterRole
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: group-sync-secret-patcher
+  name: group-sync-patcher-secret-reader
 rules:
 - apiGroups: [""]
   resources: ["secrets"]
   resourceNames: ["keycloak-credentials", "keycloak-initial-admin"]
-  verbs: ["get", "list", "watch", "patch"]
+  verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: secret-patcher
+subjects:
+  - kind: ServiceAccount
+    name: patcher
+    namespace: group-sync-operator
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: secret-patcher
 ---
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: group-sync-secret-patcher
+  name: group-sync-patcher-secret-reader
 subjects:
   - kind: ServiceAccount
     name: patcher
@@ -24,4 +47,4 @@ subjects:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: group-sync-secret-patcher
+  name: group-sync-patcher-secret-reader
