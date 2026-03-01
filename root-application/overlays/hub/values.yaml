@@ -35,6 +35,12 @@ applications:
     source:
       path: openshift-gitops-config/overlays/default
 
+  k8s-rbac-config:
+    annotations:
+      argocd.argoproj.io/sync-wave: "1"
+    source:
+      path: k8s-rbac-config/overlays/default
+
   machine-config:
     annotations:
       argocd.argoproj.io/sync-wave: "1"

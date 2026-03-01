@@ -13,16 +13,6 @@ rules:
     resourceNames: ["oidc-client-secret"]
     verbs: ["patch"]
 ---
-kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: openshift-config-patcher-secret-reader
-rules:
-- apiGroups: [""]
-  resources: ["secrets"]
-  resourceNames: ["oidc-client-secret", "ocp-oauth"]
-  verbs: ["get", "list", "watch"]
----
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
@@ -47,4 +37,4 @@ subjects:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: openshift-config-patcher-secret-reader
+  name: secret-reader
