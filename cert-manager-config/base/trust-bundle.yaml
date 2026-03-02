@@ -4,7 +4,6 @@ metadata:
   name: trust-bundle
 spec:
   sources:
-  - useDefaultCAs: true
   - secret:
       name: "self-signed-ca-root"
       key: "ca.crt"
