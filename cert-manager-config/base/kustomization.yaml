@@ -6,3 +6,4 @@ resources:
   - self-signed-root-issuer.yaml
   - self-signed-ca-root.yaml
   - self-signed-ca-cluster-issuer.yaml
+  - trust-bundle.yaml
