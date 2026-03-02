@@ -96,8 +96,7 @@ applications:
     destination:
       namespace: crossplane-system
     source:
-      repoURL: https://github.com/tim-stasse/gitops-catalog
-      path: crossplane-system/overlays/stable
+      path: crossplane-system/overlays/default
 
   crunchy-postgres-operator:
     annotations:
