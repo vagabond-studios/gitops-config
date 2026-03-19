@@ -22,3 +22,13 @@ spec:
         data:
           clientSecret: {{ (index . 1).data.clientSecret }}
       patchType: application/merge-patch+json
+    trust-bundle:
+      targetObjectRef:
+        apiVersion: v1
+        kind: ConfigMap
+        name: trust-bundle
+        namespace: openshift-config
+      patchTemplate: |
+        data:
+          ca.crt: {{ (index . 0).data."trust-bundle.pem" }}
+      patchType: application/merge-patch+json

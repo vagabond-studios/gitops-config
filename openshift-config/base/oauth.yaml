@@ -10,6 +10,8 @@ spec:
       mappingMethod: claim
       type: OpenID
       openID:
+        ca:
+          name: trust-bundle
         clientID: ocp-oauth
         clientSecret:
           name: oidc-client-secret
